@@ -1,22 +1,42 @@
 const divsContainer = document.querySelector('.divs-container');
+const clearButton = document.querySelector('.clear-button');
+let answer;
 
-for (let x = 0; x < 16; x++) {
-    const rowDiv = document.createElement('div');
+clearButton.addEventListener('click', () => {
+    divsContainer.innerHTML = "";
+    generateGrid();
+})
 
-    for (let y = 0; y < 16; y++) {
-        const columnDiv = document.createElement('div');
-        columnDiv.style.height = '15px';
-        columnDiv.style.width = '15px';
-        columnDiv.addEventListener('mouseenter', hoverStart);
+while (true) {
+    answer = prompt(`How many square grids would you like?
+    Enter a number from 16-64`);
 
-        rowDiv.appendChild(columnDiv);
+    if (answer >= 16 && answer <= 64) {
+        break;
     }
-
-    divsContainer.appendChild(rowDiv);
 }
 
-function hoverStart (e) {
-    e.target.classList.add('hover');
-    console.log(e.target);
-    console.log("mouse enter");
+generateGrid();
+
+function generateGrid() {
+    for (let x = 0; x < answer; x++) {
+        const rowDiv = document.createElement('div');
+
+        for (let y = 0; y < answer; y++) {
+            const columnDiv = document.createElement('div');
+            columnDiv.style.height = `${450 / answer}px`;
+            columnDiv.style.width = `${450 / answer}px`;
+            columnDiv.addEventListener('mouseenter',
+                (e) => e.target.classList.add('hover'));
+            // columnDiv.addEventListener('mouseleave',
+            //     (e) => e.target.classList.remove('hover'));
+
+            rowDiv.appendChild(columnDiv);
+        }
+
+        divsContainer.appendChild(rowDiv);
+    }
 }
+
+
+
