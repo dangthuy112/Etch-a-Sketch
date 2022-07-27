@@ -5,10 +5,9 @@ for (let x = 0; x < 16; x++) {
 
     for (let y = 0; y < 16; y++) {
         const columnDiv = document.createElement('div');
-
-        
-        columnDiv.style.height = '10px';
-        columnDiv.style.width = '10px';
+        columnDiv.style.height = '15px';
+        columnDiv.style.width = '15px';
+        columnDiv.addEventListener('mouseenter', hoverStart);
 
         rowDiv.appendChild(columnDiv);
     }
@@ -16,3 +15,8 @@ for (let x = 0; x < 16; x++) {
     divsContainer.appendChild(rowDiv);
 }
 
+function hoverStart (e) {
+    e.target.classList.add('hover');
+    console.log(e.target);
+    console.log("mouse enter");
+}

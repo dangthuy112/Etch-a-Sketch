@@ -28,3 +28,7 @@ button {
     display: flex;
 }
 
+.hover {
+    background-color: rgba(223, 46, 46, 0.548);
+}
+
